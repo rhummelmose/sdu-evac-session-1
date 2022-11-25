@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sdu-evac-backend
+  name: sdu-evac-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sdu-evac-backend
+  template:
+    metadata:
+      labels:
+        app: sdu-evac-backend
+    spec:
+      containers:
+      - image: localhost:5001/sdu-evac-backend:v1.0.0
+        name: sdu-evac-backend
+        env:
+        - name: PORT
+          value: "80"
+        - name: MONGO_DB_CONNECTION_STRING
+          value: mongodb://mongodb:27017
+        - name: MONGO_DB_NAME
+          value: sdu-evac
+        - name: REDIS_URI
+          value: redis://redis-master

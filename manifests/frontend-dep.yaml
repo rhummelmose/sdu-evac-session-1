@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sdu-evac-frontend
+  name: sdu-evac-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sdu-evac-frontend
+  template:
+    metadata:
+      labels:
+        app: sdu-evac-frontend
+    spec:
+      containers:
+      - image: localhost:5001/sdu-evac-frontend:v0.1.0
+        name: sdu-evac-frontend
