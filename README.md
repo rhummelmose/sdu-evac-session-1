@@ -44,5 +44,6 @@ kubectl apply -f ./Session/manifests
 ### Terraform apply
 
 ```console
-terraform -chdir=Session apply
+terraform -chdir=Session/terraform init
+terraform -chdir=Session/terraform apply
 ```
